@@ -27,11 +27,39 @@ function App() {
 
   // First let us understand how react renders a component
 
-  // console.log("App is rendered");
+  // You can see that console log is called everytime we refresh the page (You can see the log in the browser console (F12))
+  console.log("App is rendered");
+
+  // You may use let variable inside a react functional component
+  // But an update to a let variable will not trigger a re-render
+  let triggerCount = 0;
+
+  function trigger() {
+    // trigger count variable is updated inside the function
+    // However, the change of variable is not reflected in the UI (= The function is not called again)
+    // For more information, please refer to the following link:
+    //1. https://reactjs.org/docs/state-and-lifecycle.html
+    //2. https://stackoverflow.com/questions/58544796/can-i-use-let-in-react-function-component
+
+    triggerCount++;
+    alert(`You clicked the button ${triggerCount} times!`);
+  }
 
   return (
     <div className="App">
-      <div className="Control">Control Part</div>
+      <div className="Control">
+        <button
+          onClick={
+            // This is an example of how to call a function when a button is clicked
+            // We are going to call the function called "trigger"
+            trigger
+          }
+        >
+          Trigger!
+        </button>
+        {/* You can directly render a variable inside html thanks to JSX */}
+        <div>{triggerCount}</div>
+      </div>
       <div className="Result">Result Part</div>
     </div>
   );
