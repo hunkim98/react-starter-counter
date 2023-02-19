@@ -2,7 +2,7 @@
 
 This is a repository for a tutorial of React.
 
-There are four main focal points that this repository touches.
+There are four main focal points that this repository covers.
 
 1. React rendering with functional components
 
@@ -11,3 +11,10 @@ There are four main focal points that this repository touches.
 3. Dynamic component rendering with ternary operators
 
 4. Creating reusable components
+
+## How to start
+
+```bash
+npm install
+npm run start
+```
