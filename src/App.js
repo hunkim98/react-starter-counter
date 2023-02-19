@@ -37,10 +37,14 @@ function App() {
   const [managerCount, setManagerCount] = useState(1);
   const [staffCount, setStaffCount] = useState(1);
 
+  // First try to console log the guestCount only when it is updated
+  // Uncomment the below code and see the console log
+  // useEffect(() => {
+  //   console.log(`Guest count has changed to ${guestCount}!`);
+  // }, [guestCount]);
+
+  // Change the below code by using useEffect
   let isMoreStaffNeeded = false;
-  // We can use if else statements inside a react functional component
-  // However, we can see that this is inefficient as we are calling the console.log() function everytime we rerender
-  // Is there a way to only call the console.log() separately when related components are updated? (spoilers: useEffect)
   if (guestCount > staffCount * maxGuestsPerStaff) {
     console.log("More staff needed");
     isMoreStaffNeeded = true;
