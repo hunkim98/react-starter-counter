@@ -21,98 +21,18 @@ const maxGuestsPerStaff = 2;
 const maxStaffsPerManager = 2;
 
 function App() {
-  console.log("Root app has rendered!");
+  // We are going to create a Market
+  // We will create 3 counters for this tutorial (Manger, Staff, Guest)
+  // Based on the counters, we will calculate whether the market is operatable or not
 
-  // Our counters
-  const [guestCount, setGuestCount] = useState(0);
-  const [managerCount, setManagerCount] = useState(1);
-  const [staffCount, setStaffCount] = useState(1);
+  // First let us understand how react renders a component
 
-  // Our flags
-  const [isMoreStaffNeeded, setIsMoreStaffNeeded] = useState(false);
-  const [isMoreManagerNeeded, setIsMoreManagerNeeded] = useState(false);
-  const [isMarketOpen, setIsMarketOpen] = useState(true);
-
-  // useEffect can be used to trigger a function when a variable changes
-  // The second parameter is an array of variables that we want to watch for changes
-  useEffect(() => {
-    console.log(`Guest count has changed to ${guestCount}!`);
-  }, [guestCount]);
-
-  // Real use case of useEffect (check if we need more staff)
-  useEffect(() => {
-    // Check if we need more staff
-    if (guestCount > staffCount * maxGuestsPerStaff) {
-      setIsMoreStaffNeeded(true);
-    } else {
-      setIsMoreStaffNeeded(false);
-    }
-  }, [guestCount, staffCount]);
-
-  // Real use case of useEffect (check if we need more managers)
-  useEffect(() => {
-    // Check if we need more managers
-    if (staffCount > managerCount * maxStaffsPerManager) {
-      setIsMoreManagerNeeded(true);
-    } else {
-      setIsMoreManagerNeeded(false);
-    }
-  }, [staffCount, managerCount]);
-
-  useEffect(() => {
-    // Let the market close if we need more staff and managers
-    if (isMoreStaffNeeded && isMoreManagerNeeded) {
-      setIsMarketOpen(false);
-    }
-  }, [isMoreManagerNeeded, isMoreStaffNeeded]);
+  // console.log("App is rendered");
 
   return (
     <div className="App">
-      <div className="Control">
-        {/* Manager Component */}
-        <div>
-          <h2>Managers: {managerCount}</h2>
-          <div>
-            <button onClick={() => setManagerCount(managerCount + 1)}>
-              New Manager
-            </button>
-            <button onClick={() => setManagerCount(managerCount - 1)}>
-              Manager Resign
-            </button>
-          </div>
-        </div>
-        {/* Staff Component */}
-        <div>
-          <h2>Staffs: {staffCount}</h2>
-          <div>
-            <button onClick={() => setStaffCount(staffCount + 1)}>
-              New Staff
-            </button>
-            <button onClick={() => setStaffCount(staffCount - 1)}>
-              Staff Resign
-            </button>
-          </div>
-        </div>
-        {/* Guest Component */}
-        <div>
-          <h2>Guests: {guestCount}</h2>
-          <div>
-            <button onClick={() => setGuestCount(guestCount + 1)}>
-              New Guest
-            </button>
-            <button onClick={() => setGuestCount(guestCount - 1)}>
-              Guest Exit
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="Result">
-        <h2>
-          Market Status: <span>{isMarketOpen ? "OPEN" : "CLOSED"}</span>
-        </h2>
-        <h4>{isMoreStaffNeeded ? "Not enough staff" : ""}</h4>
-        <h4>{isMoreManagerNeeded ? "Not enough managers" : ""}</h4>
-      </div>
+      <div className="Control">Control Part</div>
+      <div className="Result">Result Part</div>
     </div>
   );
 }
