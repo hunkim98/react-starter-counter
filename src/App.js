@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
+import Counter from "./components/Counter";
 
 /**
  * React can be seen as HTML + JS + CSS(Optional) in one package
@@ -66,9 +67,13 @@ function App() {
     }
   }, [isMoreManagerNeeded, isMoreStaffNeeded]);
 
+  // You can see that we are using components that are pretty similar
+  // We can create a component that can be reused for all of them
   return (
     <div className="App">
       <div className="Control">
+        {/* Counter Example Component */}
+        <Counter />
         {/* Manager Component */}
         <div>
           <h2>Managers: {managerCount}</h2>
