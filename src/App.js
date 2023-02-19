@@ -34,15 +34,11 @@ function App() {
   const [isMoreManagerNeeded, setIsMoreManagerNeeded] = useState(false);
   const [isMarketOpen, setIsMarketOpen] = useState(true);
 
-  // useEffect can be used to trigger a function when a variable changes
-  // The second parameter is an array of variables that we want to watch for changes
   useEffect(() => {
     console.log(`Guest count has changed to ${guestCount}!`);
   }, [guestCount]);
 
-  // Real use case of useEffect (check if we need more staff)
   useEffect(() => {
-    // Check if we need more staff
     if (guestCount > staffCount * maxGuestsPerStaff) {
       setIsMoreStaffNeeded(true);
     } else {
@@ -50,9 +46,7 @@ function App() {
     }
   }, [guestCount, staffCount]);
 
-  // Real use case of useEffect (check if we need more managers)
   useEffect(() => {
-    // Check if we need more managers
     if (staffCount > managerCount * maxStaffsPerManager) {
       setIsMoreManagerNeeded(true);
     } else {
@@ -61,55 +55,38 @@ function App() {
   }, [staffCount, managerCount]);
 
   useEffect(() => {
-    // Let the market close if we need more staff and managers
     if (isMoreStaffNeeded && isMoreManagerNeeded) {
       setIsMarketOpen(false);
     }
   }, [isMoreManagerNeeded, isMoreStaffNeeded]);
 
-  // You can see that we are using components that are pretty similar
-  // We can create a component that can be reused for all of them
+  // This is the power of react
+  // You can easily cooperate with other developers by creating components
+  // Each developer can create their own components and later on, you can combine them together to create a bigger component
   return (
     <div className="App">
       <div className="Control">
-        {/* Counter Example Component */}
-        <Counter />
         {/* Manager Component */}
-        <div>
-          <h2>Managers: {managerCount}</h2>
-          <div>
-            <button onClick={() => setManagerCount(managerCount + 1)}>
-              New Manager
-            </button>
-            <button onClick={() => setManagerCount(managerCount - 1)}>
-              Manager Resign
-            </button>
-          </div>
-        </div>
+        <Counter
+          role="Managers"
+          count={managerCount}
+          increment={() => setManagerCount(managerCount + 1)}
+          decrement={() => setManagerCount(managerCount - 1)}
+        />
         {/* Staff Component */}
-        <div>
-          <h2>Staffs: {staffCount}</h2>
-          <div>
-            <button onClick={() => setStaffCount(staffCount + 1)}>
-              New Staff
-            </button>
-            <button onClick={() => setStaffCount(staffCount - 1)}>
-              Staff Resign
-            </button>
-          </div>
-        </div>
+        <Counter
+          role="Staffs"
+          count={staffCount}
+          increment={() => setStaffCount(staffCount + 1)}
+          decrement={() => setStaffCount(staffCount - 1)}
+        />
         {/* Guest Component */}
-        <div>
-          <h2>Guests: {guestCount}</h2>
-          <div>
-            <button onClick={() => setGuestCount(guestCount + 1)}>
-              New Guest
-            </button>
-            <button onClick={() => setGuestCount(guestCount - 1)}>
-              Guest Exit
-            </button>
-          </div>
-        </div>
+        <Counter
+          role="Guests"
+          count={guestCount}
+          increment={() => setGuestCount(guestCount + 1)}
+          decrement={() => setGuestCount(guestCount - 1)}
+        />
       </div>
       <div className="Result">
         <h2>
