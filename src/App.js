@@ -32,35 +32,88 @@ function App() {
 
   // You may use let variable inside a react functional component
   // But an update to a let variable will not trigger a re-render
-  let triggerCount = 0;
+  // Our counters
+  const [guestCount, setGuestCount] = useState(0);
+  const [managerCount, setManagerCount] = useState(1);
+  const [staffCount, setStaffCount] = useState(1);
 
-  function trigger() {
-    // trigger count variable is updated inside the function
-    // However, the change of variable is not reflected in the UI (= The function is not called again)
-    // For more information, please refer to the following link:
-    //1. https://reactjs.org/docs/state-and-lifecycle.html
-    //2. https://stackoverflow.com/questions/58544796/can-i-use-let-in-react-function-component
+  let isMoreStaffNeeded = false;
+  // We can use if else statements inside a react functional component
+  // However, we can see that this is inefficient as we are calling the console.log() function everytime we rerender
+  // Is there a way to only call the console.log() separately when related components are updated? (spoilers: useEffect)
+  if (guestCount > staffCount * maxGuestsPerStaff) {
+    console.log("More staff needed");
+    isMoreStaffNeeded = true;
+  } else {
+    console.log("No need for more staff");
+    isMoreStaffNeeded = false;
+  }
 
-    triggerCount++;
-    alert(`You clicked the button ${triggerCount} times!`);
+  let isMoreManagerNeeded = false;
+  if (staffCount > managerCount * maxStaffsPerManager) {
+    console.log("More manager needed");
+    isMoreManagerNeeded = true;
+  } else {
+    console.log("No need for more manager");
+    isMoreManagerNeeded = false;
+  }
+
+  let isMarketOpen = true;
+  if (isMoreManagerNeeded && isMoreStaffNeeded) {
+    console.log("Market is closed");
+    isMarketOpen = false;
+  } else {
+    console.log("Market is open");
+    isMarketOpen = true;
   }
 
   return (
     <div className="App">
       <div className="Control">
-        <button
-          onClick={
-            // This is an example of how to call a function when a button is clicked
-            // We are going to call the function called "trigger"
-            trigger
-          }
-        >
-          Trigger!
-        </button>
-        {/* You can directly render a variable inside html thanks to JSX */}
-        <div>{triggerCount}</div>
+        {/* Manager Component */}
+        <div>
+          <h2>Managers: {managerCount}</h2>
+          <div>
+            <button onClick={() => setManagerCount(managerCount + 1)}>
+              New Manager
+            </button>
+            <button onClick={() => setManagerCount(managerCount - 1)}>
+              Manager Resign
+            </button>
+          </div>
+        </div>
+        {/* Staff Component */}
+        <div>
+          <h2>Staffs: {staffCount}</h2>
+          <div>
+            <button onClick={() => setStaffCount(staffCount + 1)}>
+              New Staff
+            </button>
+            <button onClick={() => setStaffCount(staffCount - 1)}>
+              Staff Resign
+            </button>
+          </div>
+        </div>
+        {/* Guest Component */}
+        <div>
+          <h2>Guests: {guestCount}</h2>
+          <div>
+            <button onClick={() => setGuestCount(guestCount + 1)}>
+              New Guest
+            </button>
+            <button onClick={() => setGuestCount(guestCount - 1)}>
+              Guest Exit
+            </button>
+          </div>
+        </div>
       </div>
-      <div className="Result">Result Part</div>
+      <div className="Result">
+        <h2>
+          Market Status: <span>{isMarketOpen ? "OPEN" : "CLOSED"}</span>
+        </h2>
+        <h4>{isMoreStaffNeeded ? "Not enough staff" : ""}</h4>
+        <h4>{isMoreManagerNeeded ? "Not enough managers" : ""}</h4>
+      </div>
     </div>
   );
 }
