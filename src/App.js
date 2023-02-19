@@ -25,9 +25,19 @@ function App() {
   // We will create 3 counters for this tutorial (Manger, Staff, Guest)
   // Based on the counters, we will calculate whether the market is operatable or not
 
-  // First let us understand how react renders a component
+  // You can see that console log is called everytime we refresh the page (You can see the log in the browser console (F12))
+  console.log("App is rendered");
 
-  // console.log("App is rendered");
+  // Now let us use useState to create the counters
+  // You can understand useState as a memory for the browser to store data (once browser refreshes, the data is gone)
+
+  // What to do
+  // 1. Implement 3 counters for Manager, Staff and Guest
+  // 2. Implement a function to calculate whether the market is operatable or not
+  //    The conditions are as follows:
+  //    - (guestCount > staffCount * maxGuestsPerStaff) && (staffCount > managerCount * maxStaffsPerManager)
+  //      => Market is not operatable
+  // 3. Control the counters in the Control Part and show the result in the Result Part
 
   return (
     <div className="App">
