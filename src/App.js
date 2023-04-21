@@ -31,7 +31,10 @@ function App() {
 
   return (
     <div className="App">
-      <div className="Control">Control Part</div>
+      <div className="Control">
+        <button>Trigger!</button>
+        <div>{}</div>
+      </div>
       <div className="Result">Result Part</div>
     </div>
   );
