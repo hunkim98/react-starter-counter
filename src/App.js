@@ -38,11 +38,31 @@ function App() {
   //    - (guestCount > staffCount * maxGuestsPerStaff) && (staffCount > managerCount * maxStaffsPerManager)
   //      => Market is not operatable
   // 3. Control the counters in the Control Part and show the result in the Result Part
+  let isMoreStaffNeeded = false;
+  let isMoreManagerNeeded = false;
+  let isMarketOpen = true;
 
   return (
     <div className="App">
-      <div className="Control">Control Part</div>
-      <div className="Result">Result Part</div>
+      <div className="Control">
+        <div>
+          {/* Example div for one manager counter. You must fill in {} and () => {} */}
+          <h2>Managers: {}</h2>
+          <div>
+            <button onClick={() => {}}>New Manager</button>
+            <button onClick={() => {}}>Manager Resign</button>
+          </div>
+        </div>
+        {/* Implement other counters: Staffs, Guests */}
+      </div>
+      <div className="Result">
+        <h2>
+          {/* You can use ternary operator to dynamically render div content */}
+          Market Status: <span>{isMarketOpen ? "OPEN" : "CLOSED"}</span>
+        </h2>
+        <h4>{isMoreStaffNeeded ? "Not enough staff" : ""}</h4>
+        <h4>{isMoreManagerNeeded ? "Not enough managers" : ""}</h4>
+      </div>
     </div>
   );
 }
