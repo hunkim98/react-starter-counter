@@ -60,6 +60,30 @@ function App() {
     }
   }, [isMoreManagerNeeded, isMoreStaffNeeded]);
 
+  const incrementGuestCount = () => {
+    setGuestCount(guestCount + 1);
+  };
+
+  const decrementGuestCount = () => {
+    setGuestCount(guestCount - 1);
+  };
+
+  const incrementManagerCount = () => {
+    setManagerCount(managerCount + 1);
+  };
+
+  const decrementManagerCount = () => {
+    setManagerCount(managerCount - 1);
+  };
+
+  const incrementStaffCount = () => {
+    setStaffCount(staffCount + 1);
+  };
+
+  const decrementStaffCount = () => {
+    setStaffCount(staffCount - 1);
+  };
+
   // This is the power of react
   // You can easily cooperate with other developers by creating components
   // Each developer can create their own components and later on, you can combine them together to create a bigger component
@@ -70,22 +94,22 @@ function App() {
         <Counter
           role="Managers"
           count={managerCount}
-          increment={() => setManagerCount(managerCount + 1)}
-          decrement={() => setManagerCount(managerCount - 1)}
+          increment={incrementManagerCount}
+          decrement={decrementManagerCount}
         />
         {/* Staff Component */}
         <Counter
           role="Staffs"
           count={staffCount}
-          increment={() => setStaffCount(staffCount + 1)}
-          decrement={() => setStaffCount(staffCount - 1)}
+          increment={incrementStaffCount}
+          decrement={decrementStaffCount}
         />
         {/* Guest Component */}
         <Counter
           role="Guests"
           count={guestCount}
-          increment={() => setGuestCount(guestCount + 1)}
-          decrement={() => setGuestCount(guestCount - 1)}
+          increment={incrementGuestCount}
+          decrement={decrementGuestCount}
         />
       </div>
       <div className="Result">
