@@ -49,8 +49,8 @@ function App() {
           {/* Example div for one manager counter. You must fill in {} and () => {} */}
           <h2>Managers: {}</h2>
           <div>
-            <button onClick={() => {}}>New Manager</button>
-            <button onClick={() => {}}>Manager Resign</button>
+            <button onClick={() => {}}>Increment</button>
+            <button onClick={() => {}}>Decrement</button>
           </div>
         </div>
         {/* Implement other counters: Staffs, Guests */}
