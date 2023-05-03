@@ -67,6 +67,30 @@ function App() {
     }
   }, [isMoreManagerNeeded, isMoreStaffNeeded]);
 
+  const incrementGuestCount = () => {
+    setGuestCount(guestCount + 1);
+  };
+
+  const decrementGuestCount = () => {
+    setGuestCount(guestCount - 1);
+  };
+
+  const incrementManagerCount = () => {
+    setManagerCount(managerCount + 1);
+  };
+
+  const decrementManagerCount = () => {
+    setManagerCount(managerCount - 1);
+  };
+
+  const incrementStaffCount = () => {
+    setStaffCount(staffCount + 1);
+  };
+
+  const decrementStaffCount = () => {
+    setStaffCount(staffCount - 1);
+  };
+
   // You can see that we are using components that are pretty similar
   // We can create a component that can be reused for all of them
   return (
@@ -78,36 +102,24 @@ function App() {
         <div>
           <h2>Managers: {managerCount}</h2>
           <div>
-            <button onClick={() => setManagerCount(managerCount + 1)}>
-              New Manager
-            </button>
-            <button onClick={() => setManagerCount(managerCount - 1)}>
-              Manager Resign
-            </button>
+            <button onClick={incrementManagerCount}>New Manager</button>
+            <button onClick={decrementManagerCount}>Manager Resign</button>
           </div>
         </div>
         {/* Staff Component */}
         <div>
           <h2>Staffs: {staffCount}</h2>
           <div>
-            <button onClick={() => setStaffCount(staffCount + 1)}>
-              New Staff
-            </button>
-            <button onClick={() => setStaffCount(staffCount - 1)}>
-              Staff Resign
-            </button>
+            <button onClick={incrementStaffCount}>New Staff</button>
+            <button onClick={decrementStaffCount}>Staff Resign</button>
           </div>
         </div>
         {/* Guest Component */}
         <div>
           <h2>Guests: {guestCount}</h2>
           <div>
-            <button onClick={() => setGuestCount(guestCount + 1)}>
-              New Guest
-            </button>
-            <button onClick={() => setGuestCount(guestCount - 1)}>
-              Guest Exit
-            </button>
+            <button onClick={incrementGuestCount}>New Guest</button>
+            <button onClick={decrementGuestCount}>Guest Exit</button>
           </div>
         </div>
       </div>
