@@ -55,8 +55,10 @@ function App() {
   }, [staffCount, managerCount]);
 
   useEffect(() => {
-    if (isMoreStaffNeeded && isMoreManagerNeeded) {
+    if (isMoreStaffNeeded || isMoreManagerNeeded) {
       setIsMarketOpen(false);
+    } else {
+      setIsMarketOpen(true);
     }
   }, [isMoreManagerNeeded, isMoreStaffNeeded]);
 
