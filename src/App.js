@@ -98,24 +98,24 @@ function App() {
         <div>
           <h2>Managers: {managerCount}</h2>
           <div>
-            <button onClick={incrementManagerCount}>New Manager</button>
-            <button onClick={decrementManagerCount}>Manager Resign</button>
+            <button onClick={incrementManagerCount}>Increment</button>
+            <button onClick={decrementManagerCount}>Decrement</button>
           </div>
         </div>
         {/* Staff Component */}
         <div>
           <h2>Staffs: {staffCount}</h2>
           <div>
-            <button onClick={incrementStaffCount}>New Staff</button>
-            <button onClick={decrementStaffCount}>Staff Resign</button>
+            <button onClick={incrementStaffCount}>Increment</button>
+            <button onClick={decrementStaffCount}>Decrement</button>
           </div>
         </div>
         {/* Guest Component */}
         <div>
           <h2>Guests: {guestCount}</h2>
           <div>
-            <button onClick={incrementGuestCount}>New Guest</button>
-            <button onClick={decrementGuestCount}>Guest Exit</button>
+            <button onClick={incrementGuestCount}>Increment</button>
+            <button onClick={decrementGuestCount}>Decrement</button>
           </div>
         </div>
       </div>
