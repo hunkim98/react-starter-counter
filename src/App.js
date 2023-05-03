@@ -61,8 +61,10 @@ function App() {
 
   useEffect(() => {
     // Let the market close if we need more staff and managers
-    if (isMoreStaffNeeded && isMoreManagerNeeded) {
+    if (isMoreStaffNeeded || isMoreManagerNeeded) {
       setIsMarketOpen(false);
+    } else {
+      setIsMarketOpen(true);
     }
   }, [isMoreManagerNeeded, isMoreStaffNeeded]);
 
