@@ -63,7 +63,7 @@ function App() {
   }
 
   let isMarketOpen = true;
-  if (isMoreManagerNeeded && isMoreStaffNeeded) {
+  if (isMoreManagerNeeded || isMoreStaffNeeded) {
     console.log("Market is closed");
     isMarketOpen = false;
   } else {
