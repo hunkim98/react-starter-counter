@@ -71,6 +71,30 @@ function App() {
     isMarketOpen = true;
   }
 
+  const incrementGuestCount = () => {
+    setGuestCount(guestCount + 1);
+  };
+
+  const decrementGuestCount = () => {
+    setGuestCount(guestCount - 1);
+  };
+
+  const incrementManagerCount = () => {
+    setManagerCount(managerCount + 1);
+  };
+
+  const decrementManagerCount = () => {
+    setManagerCount(managerCount - 1);
+  };
+
+  const incrementStaffCount = () => {
+    setStaffCount(staffCount + 1);
+  };
+
+  const decrementStaffCount = () => {
+    setStaffCount(staffCount - 1);
+  };
+
   return (
     <div className="App">
       <div className="Control">
@@ -78,36 +102,24 @@ function App() {
         <div>
           <h2>Managers: {managerCount}</h2>
           <div>
-            <button onClick={() => setManagerCount(managerCount + 1)}>
-              New Manager
-            </button>
-            <button onClick={() => setManagerCount(managerCount - 1)}>
-              Manager Resign
-            </button>
+            <button onClick={incrementManagerCount}>Increment</button>
+            <button onClick={decrementManagerCount}>Decrement</button>
           </div>
         </div>
         {/* Staff Component */}
         <div>
           <h2>Staffs: {staffCount}</h2>
           <div>
-            <button onClick={() => setStaffCount(staffCount + 1)}>
-              New Staff
-            </button>
-            <button onClick={() => setStaffCount(staffCount - 1)}>
-              Staff Resign
-            </button>
+            <button onClick={incrementStaffCount}>Increment</button>
+            <button onClick={decrementStaffCount}>Decrement</button>
           </div>
         </div>
         {/* Guest Component */}
         <div>
           <h2>Guests: {guestCount}</h2>
           <div>
-            <button onClick={() => setGuestCount(guestCount + 1)}>
-              New Guest
-            </button>
-            <button onClick={() => setGuestCount(guestCount - 1)}>
-              Guest Exit
-            </button>
+            <button onClick={incrementGuestCount}>Increment</button>
+            <button onClick={decrementGuestCount}>Decrement</button>
           </div>
         </div>
       </div>
